@@ -65,6 +65,7 @@ class MultiPlotItem(GraphicsLayout.GraphicsLayout):
                 ax_traces = 0
                 ax_data = 2
                 colors = ["#d9d9d9bb","#ff333399"]
+                symbols = ["x","-"]
                 if not (('cols' in ic[ax_rows]) and ('cols' in ic[ax_traces])):
                     raise Exception(""" 3D MultiPlot needs 3D MetaArray with first dimension: 
                                     different data traces/runs to be plotted on top of each 
@@ -79,7 +80,7 @@ class MultiPlotItem(GraphicsLayout.GraphicsLayout):
                         sl[ax_rows] = i
                         sl[ax_traces] = trace_idx
                         #print(data[tuple(sl)])
-                        pi.plot(data[tuple(sl)], pen=colors[trace_idx], **plotArgs)
+                        pi.plot(data[tuple(sl)], pen=colors[trace_idx], symbol=symbols[trace_idx] **plotArgs)
                     #self.layout.addItem(pi, i, 0)
                     self.plots.append((pi, i, 0))
                     info = ic[ax_rows]['cols'][i]
